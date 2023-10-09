@@ -3,12 +3,13 @@
   import type { PageData } from "./$types";
 
   export let post: PageData;
+  // console.log('post: ', post.author)
 </script>
 
 <div class="post" on:click={() => goto(`/p/${post.id}`)}>
   <h2>{post.title}</h2>
   <small
-    >{post.author?.name ? `By ${post.author.name}` : "Unknown author"}</small
+    >{post.author?.username ? `By ${post.author.username}` : "Unknown author"}</small
   >
   <p>{@html post.content}</p>
 </div>

@@ -1,59 +1,26 @@
 <script lang="ts">
-  // import type { ActionData } from "./$types";
-
-  // export let form: ActionData;
-  export let form: FormData;
-</script>
-
-<div class="page">
-  <form method="post">
-    <h1>Signup user</h1>
-    {#if form?.missing}<p class="error">Missing field required!</p>{/if}
-    {#if form?.incorrect}<p class="error">Invalid e-mail address!</p>{/if}
-    <input
-      placeholder="Name"
-      type="text"
-      name="name"
-      value={form?.name ?? ""}
-    />
-    <input
-      placeholder="Email address"
-      type="text"
-      name="userEmail"
-      value={form?.userEmail ?? ""}
-    />
-    <button type="submit">Signup</button>
-
-    <a class="back" href="/"> or Cancel </a>
+    import type { ActionData } from './$types'
+  
+    export let form: ActionData
+  </script>
+  
+  <h1>Register</h1>
+  
+  <form action="?/register" method="POST">
+    <div>
+      <label for="username">Username</label>
+      <input id="username" name="username" type="text" required />
+    </div>
+  
+    <div>
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" required />
+    </div>
+  
+    {#if form?.user}
+      <p class="error">Username is taken.</p>
+    {/if}
+  
+    <button type="submit">Register</button>
   </form>
-</div>
-
-<style scoped>
-  .page {
-    background: white;
-    padding: 3rem;
-    display: flex;
-    justify-content: center;
-  }
-
-  input[type="text"] {
-    width: 100%;
-    padding: 0.5rem;
-    margin: 0.5rem 0;
-    border-radius: 0.25rem;
-    border: 0.125rem solid rgba(0, 0, 0, 0.2);
-  }
-
-  button[type="submit"] {
-    background: #ececec;
-    border: 0;
-    padding: 1rem 2rem;
-  }
-
-  .back {
-    margin-left: 1rem;
-  }
-  .error {
-    color: red;
-  }
-</style>
+  

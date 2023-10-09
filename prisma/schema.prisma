@@ -18,14 +18,33 @@ model Post {
   updatedAt DateTime @updatedAt
   published Boolean  @default(false)
   author    User?    @relation(fields: [authorId], references: [id])
-  authorId  Int?
+  // authorId  Int?
+  authorId  String?
 }
+
+// model User {
+//   id    Int     @id @default(autoincrement())
+//   email String  @unique
+//   name  String?
+//   posts Post[]
+// }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  posts Post[]
+  id            String @id @default(uuid())
+  username      String @unique
+  passwordHash  String
+  userAuthToken String @unique
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  role   Roles  @relation(fields: [roleId], references: [id])
+  roleId Int
+  Post   Post[]
 }
 
-
+model Roles {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+  User User[]
+}

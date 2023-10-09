@@ -1,49 +1,42 @@
 <script lang="ts">
-  import type { ActionData } from "./$types";
+  // import type { ActionData } from "./$types";
 
-  export let form: ActionData;
+  // export let form: ActionData;
+  export let form: FormData;
 </script>
 
 <div class="page">
-  <form method="post" action="?/create">
-    <h1>Create Draft</h1>
+  <form method="post" action="?/register">
+    <h1>Signup user</h1>
     {#if form?.missing}<p class="error">Missing field required!</p>{/if}
+    {#if form?.incorrect}<p class="error">Invalid e-mail address!</p>{/if}
     <input
-      name="title"
-      placeholder="Title"
+      placeholder="Name"
       type="text"
-      value={form?.title ?? ""}
+      name="name"
+      value={form?.name ?? ""}
     />
     <input
-      name="username"
-      placeholder="Author's name'"
-      type="email"
-      value={form?.username ?? ""}
+      placeholder="Email address"
+      type="text"
+      name="userEmail"
+      value={form?.userEmail ?? ""}
     />
-    <textarea
-      name="content"
-      cols="50"
-      placeholder="Content"
-      rows="8"
-      value={form?.content ?? ""}
-    />
-    <button type="submit">Create</button>
+    <button type="submit">Signup</button>
+
     <a class="back" href="/"> or Cancel </a>
   </form>
 </div>
 
-<style>
+<style scoped>
   .page {
     background: white;
     padding: 3rem;
     display: flex;
     justify-content: center;
-    align-items: center;
   }
 
-  input[type="text"],
-  input[type="email"],
-  textarea {
+  input[type="text"] {
     width: 100%;
     padding: 0.5rem;
     margin: 0.5rem 0;

@@ -3,6 +3,7 @@ import type { Action, Actions, PageServerLoad } from './$types'
 import bcrypt from 'bcrypt'
 
 import { db } from '$lib/database'
+// import { db } from './../../../prisma/dev.db'
 
 // using an enum for user roles to avoid typos
 // if you're not using TypeScript use an object
@@ -29,6 +30,7 @@ const register: Action = async ({ request }) => {
     return fail(400, { invalid: true })
   }
 
+  console.log('signup-+page.server.ts', username)
   const user = await db.user.findUnique({
     where: { username },
   })
