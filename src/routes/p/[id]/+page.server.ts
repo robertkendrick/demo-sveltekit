@@ -10,6 +10,7 @@ export const load = (async ({ params: { id } }) => {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         // include: { author: true },
         include: { 
             author: {
@@ -19,6 +20,9 @@ export const load = (async ({ params: { id } }) => {
             },
         },
     
+=======
+        include: { author: true },
+>>>>>>> f2a6af7e9e9ecc2ced45724a5d8a39c8ecb9b47b
 =======
         include: { author: true },
 >>>>>>> f2a6af7e9e9ecc2ced45724a5d8a39c8ecb9b47b
