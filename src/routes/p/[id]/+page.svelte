@@ -8,7 +8,7 @@
 <div class="page">
   <main>
     <h2>{post.title}</h2>
-    <p>{post.author?.name ? `By ${post.author.name}` : "Unknown author"}</p>
+    <p>{post.author?.username ? `By ${post.author.username}` : "Unknown author"}</p>
     <div>
       {@html post.content}
     </div>
