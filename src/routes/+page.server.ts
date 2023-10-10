@@ -7,7 +7,14 @@ export const load = (async () => {
 // 1.
 const response = await db.post.findMany({
     where: { published: true },
-    include: { author: true },
+    // include: { author: true },
+    include: { 
+        author: {
+            select: {
+                username: true, 
+            },
+        },
+    },
   })
 
 // 2.
