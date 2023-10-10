@@ -8,9 +8,8 @@
 
 <div class="post" on:click={() => goto(`/p/${post.id}`)}>
   <h2>{post.title}</h2>
-  <small
-    >{post.author?.username ? `By ${post.author.username}` : "Unknown author"}</small
-  >
+  <small>{post.author?.username ? `By ${post.author.username}` : "Unknown author"}</small>
+  <small>{post.updatedAt}</small>
   <p>{@html post.content}</p>
 </div>
 
